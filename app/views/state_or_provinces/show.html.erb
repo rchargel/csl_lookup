@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @state_or_province.name %>
+</p>
+
+<p>
+  <strong>Postalabbreviation:</strong>
+  <%= @state_or_province.postalAbbreviation %>
+</p>
+
+<%= link_to 'Edit', edit_state_or_province_path(@state_or_province) %> |
+<%= link_to 'Back', state_or_provinces_path %>
