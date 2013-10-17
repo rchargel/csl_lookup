@@ -69,6 +69,6 @@ class LanguagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def language_params
-      params.require(:language).permit(:name, :language_family_id)
+      params.require(:language).permit(:name, :language_family_id, :iso2_code, :iso3_code)
     end
 end

@@ -7,7 +7,17 @@
 
 <p>
   <strong>Language family:</strong>
-  <%= @language.language_family_id %>
+  <%= @language.language_family.name %>
+</p>
+
+<p>
+  <strong>ISO 2 Code:</strong>
+  <%= @language.iso2_code %>
+</p>
+
+<p>
+  <strong>ISO 3 Code:</strong>
+  <%= @language.iso3_code %>
 </p>
 
 <%= link_to 'Edit', edit_language_path(@language) %> |

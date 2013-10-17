@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017043858) do
+ActiveRecord::Schema.define(version: 20131017155236) do
 
   create_table "countries", force: true do |t|
     t.string   "name",          limit: 100
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20131017043858) do
     t.string   "iso3_code",     limit: 3
   end
 
+  add_index "countries", ["iso2_code"], name: "index_countries_on_iso2_code"
+  add_index "countries", ["iso3_code"], name: "index_countries_on_iso3_code"
   add_index "countries", ["name"], name: "index_countries_on_name", unique: true
 
   create_table "country_languages", force: true do |t|
@@ -44,8 +46,12 @@ ActiveRecord::Schema.define(version: 20131017043858) do
     t.integer  "language_family_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "iso2_code",          limit: 2
+    t.string   "iso3_code",          limit: 3
   end
 
+  add_index "languages", ["iso2_code"], name: "index_languages_on_iso2_code"
+  add_index "languages", ["iso3_code"], name: "index_languages_on_iso3_code"
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true
 
   create_table "states", force: true do |t|
