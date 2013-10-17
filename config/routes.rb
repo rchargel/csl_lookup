@@ -1,4 +1,6 @@
 CslLookup::Application.routes.draw do
+  resources :states
+
   resources :country_languages
 
   resources :countries
