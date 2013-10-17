@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017001917) do
+ActiveRecord::Schema.define(version: 20131017041656) do
+
+  create_table "countries", force: true do |t|
+    t.string   "name",          limit: 100
+    t.string   "official_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "countries", ["name"], name: "index_countries_on_name", unique: true
+
+  create_table "country_languages", force: true do |t|
+    t.integer  "country_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "language_families", force: true do |t|
     t.string   "name",       limit: 50
