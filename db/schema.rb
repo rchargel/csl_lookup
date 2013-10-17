@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017041656) do
+ActiveRecord::Schema.define(version: 20131017043858) do
 
   create_table "countries", force: true do |t|
     t.string   "name",          limit: 100
     t.string   "official_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "iso2_code",     limit: 2
+    t.string   "iso3_code",     limit: 3
   end
 
   add_index "countries", ["name"], name: "index_countries_on_name", unique: true
@@ -45,5 +47,16 @@ ActiveRecord::Schema.define(version: 20131017041656) do
   end
 
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true
+
+  create_table "states", force: true do |t|
+    t.string   "name",                limit: 150
+    t.string   "postal_abbreviation", limit: 10
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "states", ["name"], name: "index_states_on_name", unique: true
+  add_index "states", ["postal_abbreviation"], name: "index_states_on_postal_abbreviation", unique: true
 
 end
